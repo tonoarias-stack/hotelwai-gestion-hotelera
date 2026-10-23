@@ -1,0 +1,690 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#142b50">
+
+<title>HotelWai: Software de Gestión Hotelera para Hoteles y Hostales</title>
+
+<meta name="description" content="Descubre HotelWai, un software de gestión hotelera en la nube para administrar reservas, habitaciones, huéspedes, recepción, pagos y limpieza.">
+
+<style>
+:root {
+  --azul:#2563eb;
+  --oscuro:#142b50;
+  --gris:#52627a;
+  --fondo:#f4f7fc;
+  --borde:#e0e8f3;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--oscuro);
+  background:#fff;
+  line-height:1.75;
+}
+
+a {
+  color:var(--azul);
+  text-decoration:none;
+}
+
+a:hover { text-decoration:underline; }
+
+.container {
+  width:92%;
+  max-width:1160px;
+  margin:auto;
+}
+
+h1,h2,h3 {
+  line-height:1.25;
+  font-weight:800;
+}
+
+h1 { font-size:clamp(32px,4vw,52px); }
+h2 { font-size:clamp(26px,3vw,36px); }
+h3 { font-size:20px; }
+
+p { color:var(--gris); }
+
+section { padding:75px 0; }
+
+header {
+  background:white;
+  border-bottom:1px solid var(--borde);
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 0;
+  gap:20px;
+}
+
+.logo {
+  font-size:27px;
+  font-weight:900;
+  color:var(--oscuro);
+}
+
+.logo span { color:var(--azul); }
+
+.menu {
+  display:flex;
+  gap:25px;
+}
+
+.menu a {
+  color:#40516b;
+  font-weight:600;
+}
+
+.btn {
+  display:inline-block;
+  padding:14px 23px;
+  background:var(--azul);
+  color:#fff;
+  border-radius:9px;
+  font-weight:700;
+  transition:.2s;
+}
+
+.btn:hover {
+  background:#174ac4;
+  text-decoration:none;
+  transform:translateY(-2px);
+}
+
+.btn-white {
+  background:#fff;
+  color:var(--oscuro);
+  border:1px solid var(--borde);
+}
+
+.btn-white:hover {
+  background:#ecf3ff;
+  color:var(--azul);
+}
+
+.hero {
+  background:linear-gradient(130deg,#f8fbff,#e9f2ff);
+  padding:90px 0;
+}
+
+.hero-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+  align-items:center;
+}
+
+.hero h1 { margin:18px 0; }
+
+.hero h1 span { color:var(--azul); }
+
+.hero p {
+  font-size:17px;
+  line-height:1.8;
+}
+
+.badge {
+  display:inline-block;
+  background:#e2edff;
+  color:#1859c8;
+  font-size:13px;
+  font-weight:bold;
+  border-radius:30px;
+  padding:8px 15px;
+}
+
+.buttons {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:25px;
+}
+
+.preview {
+  padding:12px;
+  background:white;
+  border:1px solid var(--borde);
+  border-radius:18px;
+  box-shadow:0 20px 50px #10244721;
+}
+
+.preview img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+}
+
+.section-intro {
+  max-width:800px;
+  margin-bottom:34px;
+}
+
+.eyebrow {
+  color:var(--azul);
+  font-size:13px;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.soft { background:var(--fondo); }
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card {
+  background:#fff;
+  padding:28px;
+  border:1px solid var(--borde);
+  border-radius:16px;
+  transition:.2s;
+}
+
+.card:hover {
+  border-color:#abc7ff;
+  transform:translateY(-3px);
+}
+
+.card-number {
+  display:inline-block;
+  background:#e7f0ff;
+  color:var(--azul);
+  font-weight:bold;
+  padding:8px 13px;
+  border-radius:9px;
+}
+
+.card p { font-size:15px; }
+
+.screenshots {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.screenshot {
+  border:1px solid var(--borde);
+  padding:14px;
+  border-radius:16px;
+  background:#fff;
+  margin:0;
+}
+
+.screenshot img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+}
+
+.screenshot figcaption { padding:15px 8px; }
+
+.example {
+  background:#e9f8f4;
+  border:1px solid #b6e4d6;
+  padding:30px;
+  border-radius:16px;
+  margin-top:25px;
+}
+
+.example li { margin-bottom:12px; }
+
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.step {
+  padding:28px;
+  border:1px solid var(--borde);
+  border-radius:16px;
+}
+
+.step strong { color:var(--azul); }
+
+.types {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:25px 0;
+}
+
+.types span {
+  background:#edf4ff;
+  padding:10px 17px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+.faq details {
+  background:white;
+  border:1px solid var(--borde);
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.faq summary {
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.cta {
+  background:linear-gradient(120deg,#142b50,#1b57b6);
+  border-radius:20px;
+  padding:50px;
+  text-align:center;
+}
+
+.cta h2,.cta p { color:white; }
+
+.cta .btn {
+  background:white;
+  color:var(--oscuro);
+}
+
+footer {
+  text-align:center;
+  border-top:1px solid var(--borde);
+  padding:30px 15px;
+}
+
+@media(max-width:850px) {
+  .hero-grid { grid-template-columns:1fr; }
+  .cards { grid-template-columns:repeat(2,1fr); }
+}
+
+@media(max-width:600px) {
+  section { padding:50px 0; }
+  .hero { padding:55px 0; }
+  .menu { display:none; }
+  .cards,.screenshots,.steps {
+    grid-template-columns:1fr;
+  }
+  .cta { padding:35px 20px; }
+  .card { padding:22px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a class="logo" href="#inicio">Hotel<span>Wai</span></a>
+
+<nav class="menu">
+<a href="#funciones">Funciones</a>
+<a href="#capturas">Capturas</a>
+<a href="#uso">Cómo funciona</a>
+<a href="#preguntas">Preguntas</a>
+</nav>
+
+<a href="https://hotelwai.com/" class="btn">
+Sitio oficial ↗
+</a>
+
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+<div class="container hero-grid">
+
+<div>
+<span class="badge">Software de Gestión Hotelera en la Nube</span>
+
+<h1>
+HotelWai: <span>Software de Gestión Hotelera</span>
+para Hoteles y Hostales
+</h1>
+
+<p>
+¿Todavía utilizas cuadernos o Excel para administrar tu hotel?
+Conoce una forma más sencilla de organizar reservas,
+habitaciones, huéspedes y tareas de recepción
+desde una sola plataforma.
+</p>
+
+<p>
+HotelWai ayuda a propietarios y trabajadores de hoteles,
+hostales y hospedajes a mantener organizada
+la información de su establecimiento.
+</p>
+
+<div class="buttons">
+<a class="btn" href="https://hotelwai.com/">
+Conocer HotelWai ↗
+</a>
+
+<a class="btn btn-white" href="#funciones">
+Explorar funciones ↓
+</a>
+</div>
+</div>
+
+<div>
+<div class="preview">
+<img src="assets/panel-hotelwai.png"
+alt="Panel de administración de HotelWai con reservas, ocupación y habitaciones"
+width="1200" height="750">
+</div>
+<p style="text-align:center;font-size:13px">
+Panel principal del sistema HotelWai.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="que-es">
+<div class="container">
+
+<div class="section-intro">
+<p class="eyebrow">Gestión hotelera</p>
+
+<h2>¿Qué es HotelWai y para qué sirve?</h2>
+
+<p>
+HotelWai es un software de gestión hotelera en la nube,
+también conocido como PMS (Property Management System),
+que permite organizar las actividades diarias
+de hoteles, hostales y hospedajes.
+</p>
+
+<p>
+En lugar de buscar información en diferentes archivos,
+el personal puede consultar reservas, habitaciones,
+huéspedes y pagos desde un mismo panel.
+</p>
+
+<p>
+Por ejemplo, si un cliente necesita ampliar su estancia,
+recepción puede consultar la disponibilidad
+antes de realizar el cambio.
+</p>
+
+<p>
+Así resulta más sencillo mantener la información organizada
+y coordinar las operaciones del alojamiento.
+</p>
+</div>
+
+</div>
+</section>
+
+<section class="soft" id="funciones">
+<div class="container">
+
+<div class="section-intro">
+<p class="eyebrow">Principales funciones</p>
+<h2>Todo lo que necesitas para organizar tu hotel</h2>
+
+<p>
+Desde registrar una reserva hasta preparar una habitación,
+HotelWai ofrece herramientas que ayudan a simplificar
+las tareas cotidianas del establecimiento.
+</p>
+</div>
+
+<div class="cards">
+
+<article class="card">
+<span class="card-number">01</span>
+<h3>Calendario de reservas</h3>
+<p>Consulta fechas, disponibilidad y reservas desde un calendario visual.</p>
+</article>
+
+<article class="card">
+<span class="card-number">02</span>
+<h3>Mapa de habitaciones</h3>
+<p>Identifica habitaciones ocupadas, disponibles, reservadas o pendientes de limpieza.</p>
+</article>
+
+<article class="card">
+<span class="card-number">03</span>
+<h3>Gestión de huéspedes</h3>
+<p>Registra clientes y consulta la información relacionada con sus estancias.</p>
+</article>
+
+<article class="card">
+<span class="card-number">04</span>
+<h3>Check-in y check-out</h3>
+<p>Organiza los procesos de llegada y salida de los huéspedes.</p>
+</article>
+
+<article class="card">
+<span class="card-number">05</span>
+<h3>Limpieza y personal</h3>
+<p>Da seguimiento a las habitaciones y organiza empleados y permisos.</p>
+</article>
+
+<article class="card">
+<span class="card-number">06</span>
+<h3>Pagos e informes</h3>
+<p>Consulta pagos, cargos, saldos pendientes y datos de ocupación.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="capturas">
+<div class="container">
+
+<div class="section-intro">
+<p class="eyebrow">Capturas del software</p>
+<h2>Conoce HotelWai por dentro</h2>
+
+<p>
+Estas pantallas permiten conocer cómo se presenta
+la información de reservas, disponibilidad y habitaciones.
+</p>
+</div>
+
+<div class="screenshots">
+
+<figure class="screenshot">
+<img src="assets/calendario-hotelwai.png"
+alt="Calendario de reservas de HotelWai"
+loading="lazy" width="1200" height="750">
+
+<figcaption>
+<h3>Calendario hotelero</h3>
+<p>Consulta reservas, fechas de estancia y disponibilidad de habitaciones.</p>
+</figcaption>
+</figure>
+
+<figure class="screenshot">
+<img src="assets/mapa-habitaciones-hotelwai.png"
+alt="Mapa de habitaciones de HotelWai por pisos"
+loading="lazy" width="1200" height="750">
+
+<figcaption>
+<h3>Mapa de habitaciones</h3>
+<p>Revisa el estado de cada habitación de forma visual.</p>
+</figcaption>
+</figure>
+
+</div>
+</div>
+</section>
+
+<section class="soft">
+<div class="container">
+
+<p class="eyebrow">Ejemplo práctico</p>
+<h2>¿Cómo facilita HotelWai el trabajo de recepción?</h2>
+
+<p>
+Imagina que administras un hotel de 30 habitaciones.
+Durante la mañana llegan varios huéspedes,
+otros realizan su salida y algunas habitaciones necesitan limpieza.
+</p>
+
+<p>
+Con HotelWai puedes consultar las llegadas,
+revisar las habitaciones disponibles
+y mantener organizada la información del establecimiento.
+</p>
+
+<div class="example">
+<h3>Una jornada de trabajo más organizada</h3>
+
+<ol>
+<li><strong>Recepción:</strong> revisa las reservas y llegadas del día.</li>
+<li><strong>Habitaciones:</strong> consulta cuáles están disponibles y ocupadas.</li>
+<li><strong>Limpieza:</strong> actualiza el estado de las habitaciones preparadas.</li>
+<li><strong>Administración:</strong> consulta pagos y ocupación.</li>
+</ol>
+</div>
+
+<p>
+HotelWai está pensado para facilitar el trabajo
+del personal y mejorar la organización de las operaciones.
+</p>
+
+</div>
+</section>
+
+<section id="uso">
+<div class="container">
+
+<div class="section-intro">
+<p class="eyebrow">Primeros pasos</p>
+<h2>¿Cómo empezar a utilizar HotelWai?</h2>
+
+<p>
+HotelWai funciona desde un navegador web,
+por lo que no requiere instalar un programa de escritorio.
+</p>
+</div>
+
+<div class="steps">
+
+<div class="step">
+<strong>PASO 01</strong>
+<h3>Registra tu alojamiento</h3>
+<p>Crea tu cuenta y configura los datos principales de tu hotel.</p>
+</div>
+
+<div class="step">
+<strong>PASO 02</strong>
+<h3>Agrega tus habitaciones</h3>
+<p>Configura los tipos, características y tarifas de tus habitaciones.</p>
+</div>
+
+<div class="step">
+<strong>PASO 03</strong>
+<h3>Organiza tus operaciones</h3>
+<p>Registra reservas, huéspedes y empleados para comenzar.</p>
+</div>
+
+</div>
+
+<h2 style="margin-top:50px">¿Para qué alojamientos sirve?</h2>
+
+<p>
+HotelWai está orientado a establecimientos
+de diferentes tamaños y necesidades.
+</p>
+
+<div class="types">
+<span>Hoteles pequeños</span>
+<span>Hostales</span>
+<span>Hospedajes</span>
+<span>Hoteles medianos</span>
+<span>Hoteles grandes</span>
+</div>
+
+<p>
+Las funciones disponibles pueden variar
+según los módulos y planes habilitados.
+</p>
+
+</div>
+</section>
+
+<section class="soft" id="preguntas">
+<div class="container faq">
+
+<p class="eyebrow">Preguntas frecuentes</p>
+<h2>Resolvemos tus dudas sobre HotelWai</h2>
+
+<details>
+<summary>¿Qué es HotelWai?</summary>
+<p>Es un software PMS en la nube para gestionar reservas, habitaciones, huéspedes y operaciones hoteleras.</p>
+</details>
+
+<details>
+<summary>¿Necesito instalar un programa?</summary>
+<p>No. Funciona desde un navegador web con conexión a Internet.</p>
+</details>
+
+<details>
+<summary>¿Puedo utilizarlo desde el celular?</summary>
+<p>Sí. Puedes acceder desde navegadores compatibles en computadoras, tablets y celulares.</p>
+</details>
+
+<details>
+<summary>¿Sirve para hoteles pequeños?</summary>
+<p>Sí, está orientado a hoteles y hostales de distintos tamaños. Consulta los límites de cada plan.</p>
+</details>
+
+<details>
+<summary>¿HotelWai tiene opciones gratuitas?</summary>
+<p>Consulta las modalidades de acceso y los planes vigentes directamente en su página oficial.</p>
+</details>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="cta">
+<h2>Conoce HotelWai y organiza mejor tu alojamiento</h2>
+
+<p>
+Descubre herramientas para administrar
+reservas, habitaciones, huéspedes,
+pagos y tareas diarias desde una plataforma web.
+</p>
+
+<a href="https://hotelwai.com/" class="btn">
+Visitar HotelWai.com ↗
+</a>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>HotelWai · Software de gestión hotelera para hoteles y hostales</p>
+<p><a href="https://hotelwai.com/">Sitio oficial de HotelWai ↗</a></p>
+</footer>
+
+</body>
+</html>
